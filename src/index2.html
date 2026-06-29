@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PawHarmony — Animal Care Clinic</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FDFAF5;
+  --teal:#1C6B58;
+  --teal-mid:#2A836D;
+  --teal-light:#A8D8CC;
+  --teal-pale:#D4EDE6;
+  --peach:#F07250;
+  --peach-light:#F8A888;
+  --peach-pale:#FDE8DC;
+  --yellow-pale:#FBF0C5;
+  --sage-pale:#D5EBD0;
+  --txt-dark:#192E27;
+  --txt-mid:#4A6A5E;
+  --txt-soft:#90B0A8;
+}
+html,body{
+  width:100%;height:100%;overflow:hidden;
+  font-family:'Be Vietnam Pro','Segoe UI',sans-serif;
+  background:var(--cream);color:var(--txt-dark);
+}
+
+/* NAV */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 52px;position:relative;z-index:200;
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-texts h2{font-size:18px;font-weight:800;color:var(--txt-dark)}
+.logo-texts h2 em{font-style:normal;color:var(--peach)}
+.logo-texts p{font-size:9.5px;color:var(--txt-soft);letter-spacing:1.6px;margin-top:1px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--txt-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .25s}
+.nav-links a:hover{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.btn-book{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 22px;background:var(--teal);border:none;border-radius:50px;
+  color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;
+  box-shadow:0 6px 20px rgba(28,107,88,.28);transition:all .3s;font-family:inherit;
+}
+.btn-book:hover{background:var(--teal-mid);transform:translateY(-1px)}
+.btn-menu{
+  width:38px;height:38px;border-radius:8px;
+  border:1.5px solid rgba(0,0,0,.1);background:none;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4.5px;
+}
+.btn-menu span{width:16px;height:1.5px;background:var(--txt-dark);border-radius:1px;display:block}
+
+/* HERO GRID */
+.hero{
+  display:grid;grid-template-columns:330px 1fr 255px;
+  align-items:center;padding:0 52px;
+  height:calc(100vh - 72px - 138px);gap:0;position:relative;
+}
+
+/* LEFT */
+.left{position:relative;padding-right:16px;z-index:10}
+
+.deco{position:absolute;pointer-events:none;animation:decoFloat 4s ease-in-out infinite}
+@keyframes decoFloat{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(6deg)}
+}
+.d-sun{top:-26px;left:-4px;animation-delay:0s}
+.d-hrt1{top:10px;left:128px;font-size:16px;color:var(--teal-mid);animation-delay:-.8s}
+.d-hrt2{bottom:24px;left:-8px;font-size:13px;color:var(--peach-light);animation-delay:-1.6s}
+.d-lf1{top:60px;left:-22px;animation-delay:-.4s;opacity:.75}
+.d-lf2{bottom:80px;left:55px;animation-delay:-2s;opacity:.65}
+.d-star{top:140px;left:200px;font-size:12px;color:#F5D060;animation-delay:-2.5s}
+
+.arr-svg{position:absolute;pointer-events:none}
+
+.tag-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 14px;border-radius:20px;
+  border:1.5px dashed var(--teal-light);
+  font-size:11.5px;color:var(--teal-mid);margin-bottom:16px;
+}
+.tag-dot{width:5px;height:5px;border-radius:50%;background:var(--teal-mid)}
+
+h1{font-size:40px;font-weight:800;line-height:1.17;color:var(--txt-dark);margin-bottom:4px}
+.cursive-wrap{
+  display:block;
+  font-family:'Dancing Script',cursive;
+  font-size:48px;font-weight:700;color:var(--peach);line-height:1.15;margin-top:2px;
+}
+.sub{font-size:14px;color:var(--txt-mid);line-height:1.85;margin:16px 0 26px}
+
+.ctas{display:flex;align-items:center;gap:20px}
+.cta-main{
+  display:flex;align-items:center;gap:9px;
+  padding:12px 26px;background:var(--teal);border:none;border-radius:50px;
+  color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;
+  box-shadow:0 8px 24px rgba(28,107,88,.3);transition:all .3s;font-family:inherit;
+}
+.cta-main:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(28,107,88,.35)}
+.cta-vid{display:flex;align-items:center;gap:12px;background:none;border:none;cursor:pointer;font-family:inherit}
+.play-ring{
+  width:40px;height:40px;border-radius:50%;background:var(--peach);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;
+  box-shadow:0 4px 14px rgba(240,114,80,.35);transition:transform .3s;flex-shrink:0;
+}
+.cta-vid:hover .play-ring{transform:scale(1.08)}
+.vid-txt strong{font-size:13px;color:var(--txt-dark);display:block;font-weight:600}
+.vid-txt span{font-size:12px;color:var(--txt-soft)}
+
+/* CENTER */
+.center{display:flex;align-items:center;justify-content:center;position:relative;height:100%}
+
+.blob-wrap{position:relative;width:480px;height:480px;flex-shrink:0}
+
+.main-blob{
+  width:100%;height:100%;
+  border-radius:52% 48% 46% 54%/54% 46% 56% 44%;
+  overflow:hidden;position:relative;
+  box-shadow:0 20px 55px rgba(0,0,0,.1);
+  animation:blobBreath 8s ease-in-out infinite;
+}
+@keyframes blobBreath{
+  0%,100%{border-radius:52% 48% 46% 54%/54% 46% 56% 44%}
+  50%{border-radius:46% 54% 52% 48%/48% 52% 44% 56%}
+}
+
+/* Clinic interior CSS art */
+.clinic{
+  width:100%;height:100%;position:relative;overflow:hidden;
+  background:linear-gradient(165deg,#EAF5EE 0%,#F3EAD8 45%,#EDDFCA 100%);
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:18px;
+}
+.c-ceiling{position:absolute;top:0;left:0;right:0;height:38%;background:linear-gradient(180deg,rgba(255,255,255,.55) 0%,transparent 100%)}
+.c-light{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:150px;height:5px;background:rgba(255,255,255,.95);border-radius:0 0 5px 5px;
+  box-shadow:0 0 28px 10px rgba(255,255,255,.45);
+}
+.c-arch{
+  position:absolute;top:20%;left:50%;transform:translateX(-50%);
+  width:220px;height:120px;
+  border:2px solid rgba(200,185,165,.35);border-bottom:none;border-radius:110px 110px 0 0;
+}
+.c-plants{
+  position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-around;
+  padding:0 10px;font-size:30px;opacity:.3;user-select:none;
+}
+.c-desk{
+  position:absolute;top:32%;left:50%;transform:translateX(-50%);
+  width:200px;height:50px;
+  background:linear-gradient(180deg,#D5C2A0,#C4AE84);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+}
+.c-desk-logo strong{font-size:11px;color:var(--teal);font-weight:700}
+.c-desk-logo strong em{font-style:normal;color:var(--peach)}
+.c-desk-logo small{font-size:7.5px;color:#90A890;letter-spacing:.9px;display:block;text-align:center}
+.c-shelf{
+  position:absolute;right:14px;top:18%;
+  width:55px;height:130px;
+  background:rgba(196,180,155,.2);border-radius:5px;
+}
+.c-shelf-dot{
+  position:absolute;right:80px;top:22%;
+  display:flex;flex-direction:column;gap:6px;
+}
+.c-shelf-dot span{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(168,216,204,.5);display:block;
+}
+.c-plant-l{position:absolute;bottom:22%;left:10px;font-size:26px;opacity:.4;user-select:none}
+.c-plant-r{position:absolute;bottom:22%;right:10px;font-size:26px;opacity:.4;user-select:none}
+.c-staff{
+  position:absolute;top:34%;right:88px;
+  width:18px;height:45px;
+  background:rgba(175,148,118,.38);border-radius:9px 9px 3px 3px;
+}
+.c-staff-head{
+  position:absolute;top:24%;right:90px;
+  width:16px;height:16px;border-radius:50%;
+  background:rgba(175,148,118,.45);
+}
+.c-watermark{position:absolute;top:16px;left:16px;z-index:10}
+.c-watermark strong{font-size:11px;font-weight:700;color:var(--teal)}
+.c-watermark strong em{font-style:normal;color:var(--peach)}
+.c-watermark small{font-size:7.5px;color:#90A890;letter-spacing:.9px;display:block}
+.animals{
+  display:flex;gap:2px;align-items:flex-end;position:relative;z-index:5;
+  filter:drop-shadow(0 5px 10px rgba(0,0,0,.12));
+}
+
+/* CENTER arc arrows */
+.arc-l{position:absolute;left:-30px;top:36%;pointer-events:none;z-index:20}
+
+/* RIGHT */
+.right{
+  position:relative;display:flex;flex-direction:column;
+  align-items:flex-end;gap:14px;padding-top:24px;padding-left:8px;
+}
+.teal-bg{
+  position:absolute;top:-92px;right:-58px;width:205px;height:235px;
+  border-radius:62% 38% 70% 30%/48% 62% 38% 52%;
+  background:linear-gradient(145deg,rgba(168,216,204,.52),rgba(130,196,182,.3));
+  z-index:0;animation:blobBreath2 10s ease-in-out infinite;
+}
+@keyframes blobBreath2{
+  0%,100%{border-radius:62% 38% 70% 30%/48% 62% 38% 52%}
+  50%{border-radius:38% 62% 48% 52%/62% 38% 52% 48%}
+}
+.dot-grid{
+  position:absolute;top:-44px;right:28px;z-index:1;
+  display:grid;grid-template-columns:repeat(7,1fr);gap:9px;width:126px;
+}
+.dot-grid span{width:3.5px;height:3.5px;border-radius:50%;background:var(--teal-light);opacity:.5;display:block}
+
+.care-circle{
+  position:relative;z-index:5;width:152px;height:152px;border-radius:50%;background:#fff;
+  box-shadow:0 10px 28px rgba(0,0,0,.09);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:16px;
+  margin-right:32px;margin-top:86px;transition:transform .35s;
+}
+.care-circle:hover{transform:scale(1.04)}
+.cc-icons{font-size:18px;margin-bottom:4px}
+.cc-title{font-size:12px;font-weight:700;color:var(--txt-dark)}
+.cc-sub{font-size:11px;color:var(--peach);font-weight:600;margin-top:3px}
+
+.paw-blob{
+  width:135px;height:126px;
+  border-radius:55% 45% 58% 42%/44% 56% 44% 56%;
+  background:linear-gradient(145deg,#F5E8D5,#EDDBBC);overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  display:flex;align-items:center;justify-content:center;font-size:50px;
+  margin-right:8px;transition:border-radius .6s,transform .3s;cursor:pointer;
+}
+.paw-blob:hover{border-radius:45% 55% 45% 55%/55% 45% 55% 45%;transform:scale(1.04)}
+
+/* BOTTOM */
+.bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px 26px;gap:24px;
+}
+.services{display:flex;gap:14px;align-items:center}
+.svc{
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  text-align:center;cursor:pointer;transition:transform .3s;
+}
+.svc:hover{transform:translateY(-4px)}
+.sb{
+  width:74px;height:74px;display:flex;align-items:center;justify-content:center;
+  transition:border-radius .5s,transform .3s;
+}
+.svc:hover .sb{transform:scale(1.06)}
+.sb1{background:var(--teal-pale);  border-radius:56% 44% 48% 52%/44% 56% 44% 56%}
+.sb2{background:var(--peach-pale); border-radius:44% 56% 52% 48%/56% 44% 52% 48%}
+.sb3{background:var(--yellow-pale);border-radius:52% 48% 56% 44%/48% 52% 48% 52%}
+.sb4{background:var(--sage-pale);  border-radius:48% 52% 44% 56%/52% 48% 56% 44%}
+.svc-name{font-size:12px;font-weight:600;color:var(--txt-dark);line-height:1.4}
+
+.stats{text-align:right;flex-shrink:0}
+.snum{font-size:34px;font-weight:800;color:var(--teal);line-height:1}
+.slbl{font-size:12.5px;color:var(--txt-soft);margin:5px 0 11px}
+.avrow{display:flex;align-items:center;justify-content:flex-end}
+.av{
+  width:33px;height:33px;border-radius:50%;border:2.5px solid #fff;
+  margin-right:-8px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;transition:transform .2s;cursor:pointer;
+}
+.av:hover{transform:translateY(-3px);z-index:10}
+.av-plus{
+  width:33px;height:33px;border-radius:50%;background:var(--teal);color:#fff;
+  font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  border:2.5px solid #fff;cursor:pointer;transition:transform .2s;
+}
+.av-plus:hover{transform:scale(1.1)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+      <circle cx="23" cy="23" r="21.5" stroke="#1C6B58" stroke-width="1.4"/>
+      <path d="M14 28 Q13 22 16 19 Q18 16 21 17 L23 15 Q25 13 27 15 Q30 13 32 15 Q34 17 32 20 L31 28 Q30 32 23 33 Q16 32 14 28Z" stroke="#1C6B58" stroke-width="1.3" fill="none" stroke-linejoin="round"/>
+      <path d="M16 19 Q14 15 16 13 Q18 14 18 17" stroke="#1C6B58" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <path d="M30 20 Q32 15 30 13 Q28 14 28 18" stroke="#1C6B58" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <path d="M13 19 Q11 15 13 13 Q15 14 14 17" stroke="#F07250" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <circle cx="20" cy="26" r="1.1" fill="#1C6B58" opacity=".5"/>
+      <circle cx="23" cy="27.5" r="1.1" fill="#1C6B58" opacity=".5"/>
+      <circle cx="26" cy="26" r="1.1" fill="#1C6B58" opacity=".5"/>
+    </svg>
+    <div class="logo-texts">
+      <h2>Paw<em>Harmony</em></h2>
+      <p>ANIMAL CARE CLINIC</p>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#">Dịch vụ</a></li>
+    <li><a href="#">Bác sĩ</a></li>
+    <li><a href="#">Câu chuyện</a></li>
+    <li><a href="#">Kiến thức</a></li>
+    <li><a href="#">Liên hệ</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="btn-book">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+      </svg>
+      Đặt lịch khám
+    </button>
+    <button class="btn-menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+
+  <!-- LEFT -->
+  <div class="left">
+    <!-- decorative elements -->
+    <div class="deco d-sun">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="6.5" fill="#F5C840" opacity=".9"/>
+        <circle cx="16" cy="4.5" r="2.2" fill="#F5C840" opacity=".55"/>
+        <circle cx="16" cy="27.5" r="2.2" fill="#F5C840" opacity=".55"/>
+        <circle cx="4.5" cy="16" r="2.2" fill="#F5C840" opacity=".55"/>
+        <circle cx="27.5" cy="16" r="2.2" fill="#F5C840" opacity=".55"/>
+        <circle cx="7.5" cy="7.5" r="1.6" fill="#F5C840" opacity=".4"/>
+        <circle cx="24.5" cy="7.5" r="1.6" fill="#F5C840" opacity=".4"/>
+        <circle cx="7.5" cy="24.5" r="1.6" fill="#F5C840" opacity=".4"/>
+        <circle cx="24.5" cy="24.5" r="1.6" fill="#F5C840" opacity=".4"/>
+        <path d="M13,17 Q16,20.5 19,17" stroke="#E8A820" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="13.5" cy="14.5" r="1.1" fill="#E8A820"/>
+        <circle cx="18.5" cy="14.5" r="1.1" fill="#E8A820"/>
+      </svg>
+    </div>
+    <div class="deco d-hrt1">♡</div>
+    <div class="deco d-hrt2">♡</div>
+    <div class="deco d-lf1">
+      <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+        <path d="M10 2 Q17 7 15 17 Q13 23 10 23 Q7 23 5 17 Q3 7 10 2Z" fill="#A8D8CC" opacity=".75"/>
+        <path d="M10 23 L10 13" stroke="#7AC0B0" stroke-width="1.1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="deco d-lf2">
+      <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+        <path d="M9 2 Q16 6 13 15 Q11 20 9 20 Q7 20 5 15 Q2 6 9 2Z" fill="#A8D8CC" opacity=".65"/>
+        <path d="M9 20 L9 11" stroke="#7AC0B0" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="deco d-star">✦</div>
+
+    <!-- dashed curved arrow from text toward blob -->
+    <svg class="arr-svg" style="top:52px;left:178px;z-index:5" width="88" height="68" fill="none">
+      <defs>
+        <marker id="m1" viewBox="0 0 8 8" refX="5" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,2 L6,4 L0,6" stroke="#A8D8CC" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <path d="M4,10 Q44,2 80,50" stroke="#A8D8CC" stroke-width="1.5" stroke-dasharray="5,3.5" fill="none" marker-end="url(#m1)" opacity=".72"/>
+    </svg>
+
+    <div class="tag-pill"><div class="tag-dot"></div>Vì họ là gia đình</div>
+
+    <h1>
+      Đồng hành<br>trên mọi hành trình
+      <span class="cursive-wrap">
+        yêu thương
+        <!-- underline swash -->
+        <svg width="105" height="13" viewBox="0 0 105 13" fill="none" style="display:inline-block;vertical-align:middle;margin-left:3px">
+          <path d="M2 9 Q26 3 52 8.5 Q78 14 103 7" stroke="#F07250" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <!-- small heart -->
+        <svg width="17" height="15" viewBox="0 0 17 15" fill="none" style="display:inline-block;margin-left:3px;vertical-align:middle">
+          <path d="M8.5 13.5 C8.5 13.5 1 9 1 4.5A3.7 3.7 0 0 1 8.5 2.5 A3.7 3.7 0 0 1 16 4.5C16 9 8.5 13.5 8.5 13.5Z" stroke="#F07250" stroke-width="1.5" fill="none"/>
+        </svg>
+      </span>
+    </h1>
+
+    <p class="sub">PawHarmony mang đến dịch vụ thú y hiện đại,<br>chăm sóc bằng cả chuyên môn và trái tim.</p>
+
+    <div class="ctas">
+      <button class="cta-main">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg>
+        Khám phá dịch vụ
+      </button>
+      <button class="cta-vid">
+        <div class="play-ring">▶</div>
+        <div class="vid-txt">
+          <strong>Xem câu chuyện</strong>
+          <span>của chúng tôi</span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- side arc arrow -->
+    <svg class="arc-l" width="52" height="108" fill="none">
+      <defs>
+        <marker id="m2" viewBox="0 0 8 8" refX="5" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,2 L5,4 L0,6" stroke="#F8A888" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <path d="M44,5 Q4,54 40,103" stroke="#F8A888" stroke-width="1.5" stroke-dasharray="5,3.5" fill="none" marker-end="url(#m2)" opacity=".72"/>
+    </svg>
+
+    <div class="blob-wrap">
+      <div class="main-blob">
+        <div class="clinic">
+          <div class="c-ceiling"></div>
+          <div class="c-light"></div>
+          <div class="c-arch"></div>
+          <div class="c-plants">🌿 🌱 🪴 🌿 🌱</div>
+          <div class="c-shelf"></div>
+          <div class="c-shelf-dot"><span></span><span></span><span></span></div>
+          <div class="c-staff-head"></div>
+          <div class="c-staff"></div>
+          <div class="c-plant-l">🌿</div>
+          <div class="c-plant-r">🪴</div>
+          <div class="c-desk">
+            <div class="c-desk-logo">
+              <strong>Paw<em>Harmony</em></strong>
+              <small>ANIMAL CARE CLINIC</small>
+            </div>
+          </div>
+          <div class="c-watermark">
+            <strong>Paw<em>Harmony</em></strong>
+            <small>ANIMAL CARE CLINIC</small>
+          </div>
+          <div class="animals">
+            <span style="font-size:70px;filter:drop-shadow(0 5px 9px rgba(0,0,0,.14))">🐕</span>
+            <span style="font-size:50px;margin-bottom:3px;filter:drop-shadow(0 4px 7px rgba(0,0,0,.12))">🐈</span>
+            <span style="font-size:60px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.13))">🐩</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="teal-bg"></div>
+    <div class="dot-grid" id="dotGrid"></div>
+    <div class="care-circle">
+      <div class="cc-icons" id="ccIcons">🤍 🐾</div>
+      <div class="cc-title">Care with love</div>
+      <div class="cc-sub">Grow with trust</div>
+    </div>
+    <div class="paw-blob">🐾</div>
+  </div>
+</div>
+
+<!-- BOTTOM -->
+<div class="bottom">
+  <div class="services">
+
+    <div class="svc">
+      <div class="sb sb1">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="13" r="6.5" stroke="#1C6B58" stroke-width="1.8"/>
+          <path d="M16 19.5 L16 27" stroke="#1C6B58" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12 24 L20 24" stroke="#1C6B58" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="24" cy="8" r="3" stroke="#1C6B58" stroke-width="1.4"/>
+          <path d="M21.5 10.5 L18.8 13.2" stroke="#1C6B58" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svc-name">Khám & tư vấn<br>chuyên sâu</div>
+    </div>
+
+    <div class="svc">
+      <div class="sb sb2">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4 L26 8.5 L26 17 C26 23 21 27.5 16 29.5 C11 27.5 6 23 6 17 L6 8.5 Z" stroke="#F07250" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <path d="M16 13.5 L16 20.5 M12.5 17 L19.5 17" stroke="#F07250" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svc-name">Tiêm phòng<br>an toàn</div>
+    </div>
+
+    <div class="svc">
+      <div class="sb sb3">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="6" y="14" width="20" height="12" rx="4" stroke="#B89018" stroke-width="1.8"/>
+          <path d="M10 14 L10 11 Q10 8 13.5 8 L18.5 8 Q22 8 22 11 L22 14" stroke="#B89018" stroke-width="1.8" fill="none"/>
+          <circle cx="13" cy="20" r="2" stroke="#B89018" stroke-width="1.4"/>
+          <circle cx="19" cy="20" r="2" stroke="#B89018" stroke-width="1.4"/>
+          <circle cx="9" cy="6" r="1.5" fill="#B89018" opacity=".5"/>
+          <circle cx="14" cy="4" r="1.2" fill="#B89018" opacity=".4"/>
+          <circle cx="23" cy="5" r="1.5" fill="#B89018" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="svc-name">Spa & Grooming<br>cao cấp</div>
+    </div>
+
+    <div class="svc">
+      <div class="sb sb4">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M6 17 L16 7.5 L26 17 L26 27 L6 27 Z" stroke="#3A8038" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <path d="M13 27 L13 21 L19 21 L19 27" stroke="#3A8038" stroke-width="1.8" fill="none"/>
+          <path d="M14.5 15 C14.5 15 16 12.5 17.5 15 C16 17 14.5 15 14.5 15Z" stroke="#3A8038" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <div class="svc-name">Lưu trú & chăm sóc<br>toàn diện</div>
+    </div>
+
+  </div>
+
+  <div class="stats">
+    <div class="snum">10.000+</div>
+    <div class="slbl">gia đình thú cưng tin tưởng lựa chọn</div>
+    <div class="avrow">
+      <div class="av" style="background:linear-gradient(135deg,#d4a853,#c08030)">😊</div>
+      <div class="av" style="background:linear-gradient(135deg,#6a9f70,#4a7f50)">🙂</div>
+      <div class="av" style="background:linear-gradient(135deg,#8070c0,#5050a0)">😄</div>
+      <div class="av" style="background:linear-gradient(135deg,#c07060,#a05040)">😁</div>
+      <div class="av" style="background:linear-gradient(135deg,#70a0c0,#4080a0)">🙂</div>
+      <div class="av-plus">+</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// dot grid
+const dg = document.getElementById('dotGrid');
+for(let i=0;i<49;i++){
+  const s=document.createElement('span');
+  s.style.opacity=(0.2+Math.random()*.5).toFixed(2);
+  dg.appendChild(s);
+}
+
+// care icons cycle
+const cc=document.getElementById('ccIcons');
+const icons=['🤍 🐾','🧡 🐾','💛 🐾','💚 🐾'];
+let ii=0;
+setInterval(()=>{ii=(ii+1)%icons.length;cc.textContent=icons[ii]},3500);
+
+// subtle mouse parallax
+document.addEventListener('mousemove',e=>{
+  const cx=e.clientX/window.innerWidth-.5;
+  const cy=e.clientY/window.innerHeight-.5;
+  const bw=document.querySelector('.blob-wrap');
+  if(bw)bw.style.transform=`translate(${cx*10}px,${cy*7}px)`;
+  document.querySelectorAll('.deco').forEach((d,i)=>{
+    const f=0.7+i*.25;
+    d.style.transform=`translate(${-cx*f*6}px,${-cy*f*5}px)`;
+  });
+  const circ=document.querySelector('.care-circle');
+  const pb=document.querySelector('.paw-blob');
+  if(circ)circ.style.transform=`translate(${cx*-7}px,${cy*-5}px)`;
+  if(pb)pb.style.transform=`translate(${cx*-5}px,${cy*-4}px)`;
+});
+
+// service card blob hover ripple
+document.querySelectorAll('.svc').forEach(c=>{
+  c.addEventListener('mouseenter',()=>{
+    const b=c.querySelector('.sb');
+    b.style.transition='border-radius .6s,transform .3s';
+  });
+});
+</script>
+</body>
+</html>
