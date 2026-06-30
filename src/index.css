@@ -16,15 +16,28 @@
   --txt-dark: #192E27;
   --txt-mid: #4A6A5E;
   --txt-soft: #90B0A8;
+
+  /* extended tones for deeper, layered sections below the hero */
+  --ink: #0F2A22;
+  --ink-mid: #143A2F;
+  --gold: #F5C840;
+  --gold-soft: #F8DE94;
+  --rose: #F7B6A6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 html, body {
-  width: 100%; height: 100%; overflow: hidden;
+  width: 100%; overflow-x: hidden;
   font-family: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
   background: var(--cream); color: var(--txt-dark);
 }
 
 #root {
   width: 100%;
-  height: 100%;
 }

@@ -1,10 +1,18 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import './App.css'
+import './sections/shared.css'
 import dog  from './assets/dog.png'
 import dog2 from './assets/dog2.png'
 import dog3 from './assets/dog3.png'
 import dog4 from './assets/dog4.png'
 import dog6 from './assets/dog6.png'
+import Ecosystem from './sections/Ecosystem'
+import Services from './sections/Services'
+import Story from './sections/Story'
+import Cases from './sections/Cases'
+import Testimonials from './sections/Testimonials'
+import Knowledge from './sections/Knowledge'
+import Footer from './sections/Footer'
 
 function LogoSVG() {
   return (
@@ -116,11 +124,11 @@ function App() {
         </div>
 
         <ul className="nav-links">
-          <li><a href="#">Dịch vụ</a></li>
-          <li><a href="#">Bác sĩ</a></li>
-          <li><a href="#">Câu chuyện</a></li>
-          <li><a href="#">Kiến thức</a></li>
-          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#dich-vu">Dịch vụ</a></li>
+          <li><a href="#ca-xu-ly">Ca đã xử lý</a></li>
+          <li><a href="#cau-chuyen">Câu chuyện</a></li>
+          <li><a href="#kien-thuc">Kiến thức</a></li>
+          <li><a href="#lien-he">Liên hệ</a></li>
         </ul>
 
         <div className="nav-right">
@@ -314,6 +322,14 @@ function App() {
           </div>
         </div>
       </div>
+
+      <Ecosystem />
+      <Services />
+      <Story />
+      <Cases />
+      <Testimonials />
+      <Knowledge />
+      <Footer />
     </>
   )
 }

@@ -1,0 +1,60 @@
+.cases {
+  position: relative;
+  padding: 120px 0 130px;
+  background: var(--cream);
+}
+
+.cases-head { max-width: 540px; margin-bottom: 60px; }
+.cases-eyebrow { color: var(--teal); }
+.cases-h2 {
+  font-size: clamp(28px, 3.6vw, 44px); font-weight: 800; line-height: 1.2;
+  color: var(--txt-dark); margin-top: 16px;
+}
+.cases-h2 span { color: var(--peach); }
+
+.cases-list { display: flex; flex-direction: column; gap: 70px; }
+
+.cases-row {
+  display: grid;
+  grid-template-columns: .8fr 1fr;
+  gap: 46px;
+  align-items: center;
+}
+.cases-row:nth-child(even) { grid-template-columns: 1fr .8fr; }
+.cases-row:nth-child(even) .cases-img { order: 2; }
+.cases-row:nth-child(even) .cases-body { order: 1; }
+.cases-row:nth-child(odd) .cases-img { transform: rotate(-1.5deg); }
+.cases-row:nth-child(even) .cases-img { transform: rotate(1.5deg); }
+
+.cases-img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 8% 40% 8% 40% / 40% 8% 40% 8%;
+  overflow: hidden;
+  box-shadow: 0 26px 60px rgba(25,46,39,.16);
+}
+.cases-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cases-duration {
+  position: absolute; left: 16px; bottom: 16px;
+  background: rgba(15,42,34,.78); color: #F4EFE4; backdrop-filter: blur(4px);
+  font-size: 11px; font-weight: 600; padding: 7px 14px; border-radius: 20px;
+}
+
+.cases-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .4px;
+  color: var(--teal); background: var(--teal-pale);
+  padding: 6px 14px; border-radius: 20px; margin-bottom: 14px;
+}
+.cases-body h3 { font-size: clamp(18px, 1.9vw, 23px); font-weight: 700; color: var(--txt-dark); line-height: 1.35; margin-bottom: 12px; }
+.cases-body p { font-size: 13.5px; line-height: 1.8; color: var(--txt-mid); max-width: 460px; margin-bottom: 18px; }
+.cases-outcome {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #2A8050; font-size: 12.5px; font-weight: 700;
+  background: var(--sage-pale); padding: 8px 16px; border-radius: 20px;
+}
+
+@media (max-width: 880px) {
+  .cases-row, .cases-row:nth-child(even) { grid-template-columns: 1fr; }
+  .cases-row:nth-child(even) .cases-img, .cases-row:nth-child(even) .cases-body { order: initial; }
+  .cases-row .cases-img { transform: none !important; }
+}
