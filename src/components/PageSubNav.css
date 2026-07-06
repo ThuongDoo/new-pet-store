@@ -1,0 +1,33 @@
+.page-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(28, 107, 88, .1);
+}
+.page-subnav-inner {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.page-subnav-tab {
+  flex-shrink: 0;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: 1.5px solid var(--teal-light);
+  background: none;
+  color: var(--txt-mid);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s;
+}
+.page-subnav-tab:hover { border-color: var(--teal-mid); color: var(--teal); }
+.page-subnav-tab.is-active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}

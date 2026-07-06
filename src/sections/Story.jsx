@@ -11,7 +11,7 @@ const milestones = [
 
 export default function Story() {
   return (
-    <section className="story" id="cau-chuyen">
+    <section className="story">
       <div className="section-wrap story-wrap">
         <Reveal className="story-image-col">
           <div className="story-img-frame">

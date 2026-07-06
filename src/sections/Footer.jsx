@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Footer.css'
 import Reveal from './Reveal'
 
@@ -27,14 +28,15 @@ function SocialChat() {
 }
 
 const footerLinks = [
-  { label: 'Dịch vụ', href: '#dich-vu' },
-  { label: 'Ca đã xử lý', href: '#ca-xu-ly' },
-  { label: 'Câu chuyện', href: '#cau-chuyen' },
-  { label: 'Kiến thức', href: '#kien-thuc' },
-  { label: 'Liên hệ', href: '#lien-he' },
+  { label: 'Giới thiệu', to: '/gioi-thieu' },
+  { label: 'Dịch vụ', to: '/dich-vu' },
+  { label: 'Đặt lịch khám', to: '/dat-lich-kham' },
+  { label: 'Thư viện ảnh', to: '/thu-vien-anh' },
+  { label: 'Đánh giá khách hàng', to: '/danh-gia-khach-hang' },
+  { label: 'Liên hệ', to: '/lien-he' },
 ]
 
-export default function Footer() {
+export function ContactCTA() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
@@ -43,81 +45,83 @@ export default function Footer() {
   }
 
   return (
-    <>
-      <section className="foot-cta" id="lien-he">
-        <div className="foot-blob foot-blob1"></div>
-        <div className="foot-blob foot-blob2"></div>
-        <span className="foot-deco foot-deco-sun">✦</span>
-        <span className="foot-deco foot-deco-leaf">🐾</span>
+    <section className="foot-cta" id="lien-he">
+      <div className="foot-blob foot-blob1"></div>
+      <div className="foot-blob foot-blob2"></div>
+      <span className="foot-deco foot-deco-sun">✦</span>
+      <span className="foot-deco foot-deco-leaf">🐾</span>
 
-        <div className="section-wrap foot-cta-wrap">
-          <Reveal className="foot-cta-copy">
-            <div className="eyebrow foot-eyebrow">✦ Liên hệ</div>
-            <h2 className="foot-h2">Hãy để chúng tôi<br /><em>đồng hành cùng bé.</em></h2>
-            <p className="foot-p">
-              Đặt lịch khám, hỏi thăm tình trạng sức khỏe, hay chỉ đơn giản là
-              trò chuyện — chúng tôi luôn sẵn sàng lắng nghe.
-            </p>
-            <div className="foot-cta-actions">
-              <a href="tel:19009999" className="foot-cta-phone">
-                <span className="foot-phone-ring">📞</span>
-                <span>
-                  <strong>1900 9999</strong>
-                  <small>Hotline 24/7</small>
-                </span>
-              </a>
+      <div className="section-wrap foot-cta-wrap">
+        <Reveal className="foot-cta-copy">
+          <div className="eyebrow foot-eyebrow">✦ Liên hệ</div>
+          <h2 className="foot-h2">Hãy để chúng tôi<br /><em>đồng hành cùng bé.</em></h2>
+          <p className="foot-p">
+            Đặt lịch khám, hỏi thăm tình trạng sức khỏe, hay chỉ đơn giản là
+            trò chuyện — chúng tôi luôn sẵn sàng lắng nghe.
+          </p>
+          <div className="foot-cta-actions">
+            <a href="tel:19009999" className="foot-cta-phone">
+              <span className="foot-phone-ring">📞</span>
+              <span>
+                <strong>1900 9999</strong>
+                <small>Hotline 24/7</small>
+              </span>
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal className="foot-form-card" delay={150}>
+          {submitted ? (
+            <div className="foot-form-thanks">
+              <div className="foot-form-thanks-icon">🤍</div>
+              <h3>Đã nhận được lời nhắn!</h3>
+              <p>Đội ngũ PawHarmony sẽ liên hệ lại với bạn sớm nhất.</p>
             </div>
-          </Reveal>
-
-          <Reveal className="foot-form-card" delay={150}>
-            {submitted ? (
-              <div className="foot-form-thanks">
-                <div className="foot-form-thanks-icon">🤍</div>
-                <h3>Đã nhận được lời nhắn!</h3>
-                <p>Đội ngũ PawHarmony sẽ liên hệ lại với bạn sớm nhất.</p>
+          ) : (
+            <form className="foot-form" onSubmit={handleSubmit}>
+              <h3>Gửi lời nhắn cho chúng tôi</h3>
+              <div className="foot-field-row">
+                <input type="text" placeholder="Họ và tên" required />
+                <input type="tel" placeholder="Số điện thoại" required />
               </div>
-            ) : (
-              <form className="foot-form" onSubmit={handleSubmit}>
-                <h3>Gửi lời nhắn cho chúng tôi</h3>
-                <div className="foot-field-row">
-                  <input type="text" placeholder="Họ và tên" required />
-                  <input type="tel" placeholder="Số điện thoại" required />
-                </div>
-                <input type="text" placeholder="Tên & loài thú cưng của bạn" />
-                <textarea placeholder="Bạn cần PawHarmony hỗ trợ điều gì?" rows={3}></textarea>
-                <button type="submit">Gửi lời nhắn</button>
-              </form>
-            )}
-          </Reveal>
-        </div>
-      </section>
+              <input type="text" placeholder="Tên & loài thú cưng của bạn" />
+              <textarea placeholder="Bạn cần PawHarmony hỗ trợ điều gì?" rows={3}></textarea>
+              <button type="submit">Gửi lời nhắn</button>
+            </form>
+          )}
+        </Reveal>
+      </div>
+    </section>
+  )
+}
 
-      <footer className="site-footer">
-        <div className="section-wrap site-footer-wrap">
-          <div className="site-footer-brand">
-            <div className="site-footer-logo"><LogoMark /><span>Paw<em>Harmony</em></span></div>
-            <p>Vì họ là gia đình — chăm sóc bằng cả chuyên môn và trái tim.</p>
-            <div className="site-footer-social">
-              <a href="#" aria-label="Facebook"><SocialFacebook /></a>
-              <a href="#" aria-label="Instagram"><SocialCamera /></a>
-              <a href="#" aria-label="Zalo"><SocialChat /></a>
-            </div>
-          </div>
-
-          <nav className="site-footer-nav">
-            {footerLinks.map(l => <a key={l.label} href={l.href}>{l.label}</a>)}
-          </nav>
-
-          <div className="site-footer-addr">
-            <p>123 Đường Yêu Thương, Q.1, TP.HCM</p>
-            <p>hello@pawharmony.vn</p>
+export function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="section-wrap site-footer-wrap">
+        <div className="site-footer-brand">
+          <div className="site-footer-logo"><LogoMark /><span>Paw<em>Harmony</em></span></div>
+          <p>Vì họ là gia đình — chăm sóc bằng cả chuyên môn và trái tim.</p>
+          <div className="site-footer-social">
+            <a href="#" aria-label="Facebook"><SocialFacebook /></a>
+            <a href="#" aria-label="Instagram"><SocialCamera /></a>
+            <a href="#" aria-label="Zalo"><SocialChat /></a>
           </div>
         </div>
-        <div className="site-footer-bottom">
-          <span>© 2026 PawHarmony Animal Care Clinic.</span>
-          <span>Made with 🤍 for every paw.</span>
+
+        <nav className="site-footer-nav">
+          {footerLinks.map(l => <Link key={l.label} to={l.to}>{l.label}</Link>)}
+        </nav>
+
+        <div className="site-footer-addr">
+          <p>123 Đường Yêu Thương, Q.1, TP.HCM</p>
+          <p>hello@pawharmony.vn</p>
         </div>
-      </footer>
-    </>
+      </div>
+      <div className="site-footer-bottom">
+        <span>© 2026 PawHarmony Animal Care Clinic.</span>
+        <span>Made with 🤍 for every paw.</span>
+      </div>
+    </footer>
   )
 }

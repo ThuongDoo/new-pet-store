@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
 import './Services.css'
 import Reveal from './Reveal'
 
-function IconExam() {
+export function IconExam() {
   return (
     <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
       <circle cx="16" cy="13" r="6.5" stroke="#1C6B58" strokeWidth="1.8" />
@@ -12,7 +13,7 @@ function IconExam() {
     </svg>
   )
 }
-function IconVaccine() {
+export function IconVaccine() {
   return (
     <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
       <path d="M16 4 L26 8.5 L26 17 C26 23 21 27.5 16 29.5 C11 27.5 6 23 6 17 L6 8.5 Z" stroke="#F07250" strokeWidth="1.8" fill="none" strokeLinejoin="round" />
@@ -20,7 +21,7 @@ function IconVaccine() {
     </svg>
   )
 }
-function IconSpa() {
+export function IconSpa() {
   return (
     <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
       <rect x="6" y="14" width="20" height="12" rx="4" stroke="#B89018" strokeWidth="1.8" />
@@ -30,7 +31,7 @@ function IconSpa() {
     </svg>
   )
 }
-function IconStay() {
+export function IconStay() {
   return (
     <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
       <path d="M6 17 L16 7.5 L26 17 L26 27 L6 27 Z" stroke="#3A8038" strokeWidth="1.8" fill="none" strokeLinejoin="round" />
@@ -38,7 +39,7 @@ function IconStay() {
     </svg>
   )
 }
-function IconLab() {
+export function IconLab() {
   return (
     <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
       <path d="M13 5 L13 14.5 L7 24 Q6 27 9 27 L23 27 Q26 27 25 24 L19 14.5 L19 5" stroke="#2A836D" strokeWidth="1.8" fill="none" strokeLinejoin="round" />
@@ -98,7 +99,7 @@ export default function Services() {
             </Reveal>
           ))}
 
-          <Reveal className="service-card service-card-cta" delay={620}>
+          <Reveal as={Link} to="/dich-vu" className="service-card service-card-cta" delay={620}>
             <span>Xem tất cả dịch vụ</span>
             <ArrowIcon />
           </Reveal>

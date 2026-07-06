@@ -1,0 +1,29 @@
+.contact-info { padding: 0 0 100px; }
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.contact-info-card {
+  background: #fff; border-radius: 20px; padding: 28px 30px;
+  box-shadow: 0 10px 28px rgba(28,107,88,.07);
+}
+.contact-info-card h3 { font-size: 15px; font-weight: 700; color: var(--txt-dark); margin-bottom: 10px; }
+.contact-info-card p { font-size: 13.5px; color: var(--txt-mid); line-height: 1.8; }
+.contact-map-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  color: var(--teal); font-weight: 600; font-size: 13.5px; text-decoration: none;
+}
+.contact-map-link:hover { color: var(--teal-mid); }
+
+.contact-map-box {
+  border-radius: 20px; overflow: hidden; height: 100%; min-height: 220px;
+  background: var(--teal-pale);
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px;
+  color: var(--teal-mid); font-size: 13.5px; text-align: center; padding: 24px;
+}
+.contact-map-box strong { font-size: 15px; color: var(--txt-dark); }
+
+@media (max-width: 800px) {
+  .contact-info-grid { grid-template-columns: 1fr; }
+}

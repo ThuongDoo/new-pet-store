@@ -1,0 +1,32 @@
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 52px; position: relative; z-index: 200;
+  background: var(--cream);
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.logo-texts h2 { font-size: 18px; font-weight: 800; color: var(--txt-dark); margin: 0; }
+.logo-texts h2 em { font-style: normal; color: var(--peach); }
+.logo-texts p { font-size: 9.5px; color: var(--txt-soft); letter-spacing: 1.6px; margin-top: 1px; }
+.nav-links { display: flex; gap: 36px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--txt-mid); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .25s; }
+.nav-links a:hover { color: var(--teal); }
+.nav-links a.active { color: var(--teal); font-weight: 700; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.btn-book {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 22px; background: var(--teal); border: none; border-radius: 50px;
+  color: #fff; font-size: 13.5px; font-weight: 600; cursor: pointer; text-decoration: none;
+  box-shadow: 0 6px 20px rgba(28,107,88,.28); transition: all .3s; font-family: inherit;
+}
+.btn-book:hover { background: var(--teal-mid); transform: translateY(-1px); }
+.btn-menu {
+  width: 38px; height: 38px; border-radius: 8px;
+  border: 1.5px solid rgba(0,0,0,.1); background: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4.5px;
+}
+.btn-menu span { width: 16px; height: 1.5px; background: var(--txt-dark); border-radius: 1px; display: block; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}
