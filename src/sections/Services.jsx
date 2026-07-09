@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import './Services.css'
 import Reveal from './Reveal'
 
@@ -98,11 +97,6 @@ export default function Services() {
               <p>{s.desc}</p>
             </Reveal>
           ))}
-
-          <Reveal as={Link} to="/dich-vu" className="service-card service-card-cta" delay={620}>
-            <span>Xem tất cả dịch vụ</span>
-            <ArrowIcon />
-          </Reveal>
         </div>
       </div>
     </section>

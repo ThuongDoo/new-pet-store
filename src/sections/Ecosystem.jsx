@@ -31,7 +31,7 @@ export default function Ecosystem() {
   }, []);
 
   return (
-    <section className="eco" id="eco">
+    <section className="eco" id="gioi-thieu">
       <div
         className="eco-glow eco-glow1"
         ref={(el) => (layerRefs.current[0] = el)}

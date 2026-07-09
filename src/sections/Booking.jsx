@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './Booking.css'
-import '../sections/shared.css'
-import Reveal from '../sections/Reveal'
+import Reveal from './Reveal'
 import Faq from '../components/Faq'
 
 const serviceOptions = [
@@ -33,12 +32,12 @@ export default function Booking() {
   }
 
   return (
-    <div className="booking-wrap">
+    <section className="booking-wrap" id="dat-lich-kham">
       <div className="section-wrap">
         <div className="booking-grid">
           <Reveal className="booking-copy">
             <div className="eyebrow">✦ Đặt lịch khám</div>
-            <h1 className="booking-h1">Đặt lịch chỉ mất<br /><span>một phút.</span></h1>
+            <h2 className="booking-h1">Đặt lịch chỉ mất<br /><span>một phút.</span></h2>
             <p>
               Điền thông tin bên dưới, đội ngũ PawHarmony sẽ liên hệ xác nhận lịch hẹn
               trong thời gian sớm nhất.
@@ -97,6 +96,6 @@ export default function Booking() {
           </Reveal>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

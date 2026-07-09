@@ -1,4 +1,4 @@
-.booking-wrap { padding: 56px 0 100px; }
+.booking-wrap { padding: 100px 0; }
 .booking-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;

@@ -47,7 +47,7 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section className="tm" id="danh-gia">
+    <section className="tm" id="danh-gia-khach-hang">
       <div className="section-wrap tm-wrap">
         <Reveal className="tm-stat-col">
           <div className="tm-stat-blob">

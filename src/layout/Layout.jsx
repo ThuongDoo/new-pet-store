@@ -1,6 +1,5 @@
-import { useEffect } from 'react'
-import { NavLink, Link, Outlet, useLocation } from 'react-router-dom'
 import './Layout.css'
+import Home from '../pages/Home'
 import { SiteFooter } from '../sections/Footer'
 
 function LogoSVG() {
@@ -19,60 +18,40 @@ function LogoSVG() {
 }
 
 const navItems = [
-  { to: '/gioi-thieu', label: 'Giới thiệu' },
-  { to: '/dich-vu', label: 'Dịch vụ' },
-  { to: '/thu-vien-anh', label: 'Thư viện ảnh' },
-  { to: '/danh-gia-khach-hang', label: 'Đánh giá khách hàng' },
-  { to: '/lien-he', label: 'Liên hệ' },
+  { to: '#gioi-thieu', label: 'Giới thiệu' },
+  { to: '#dich-vu', label: 'Dịch vụ' },
+  { to: '#thu-vien-anh', label: 'Thư viện ảnh' },
+  { to: '#danh-gia-khach-hang', label: 'Đánh giá khách hàng' },
+  { to: '#lien-he', label: 'Liên hệ' },
 ]
-
-function ScrollManager() {
-  const location = useLocation()
-
-  useEffect(() => {
-    if (location.hash) {
-      const el = document.getElementById(location.hash.slice(1))
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        return
-      }
-    }
-    window.scrollTo(0, 0)
-  }, [location.pathname, location.hash])
-
-  return null
-}
 
 export default function Layout() {
   return (
     <>
-      <ScrollManager />
       <nav>
-        <Link to="/" className="logo">
+        <a href="#top" className="logo">
           <LogoSVG />
           <div className="logo-texts">
             <h2>Paw<em>Harmony</em></h2>
             <p>ANIMAL CARE CLINIC</p>
           </div>
-        </Link>
+        </a>
 
         <ul className="nav-links">
           {navItems.map(item => (
             <li key={item.to}>
-              <NavLink to={item.to} className={({ isActive }) => isActive ? 'active' : undefined}>
-                {item.label}
-              </NavLink>
+              <a href={item.to}>{item.label}</a>
             </li>
           ))}
         </ul>
 
         <div className="nav-right">
-          <Link to="/dat-lich-kham" className="btn-book">
+          <a href="#dat-lich-kham" className="btn-book">
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
               <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
             </svg>
             Đặt lịch khám
-          </Link>
+          </a>
           <button className="btn-menu">
             <span></span><span></span><span></span>
           </button>
@@ -80,7 +59,7 @@ export default function Layout() {
       </nav>
 
       <main>
-        <Outlet />
+        <Home />
       </main>
 
       <SiteFooter />

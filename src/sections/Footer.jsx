@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import './Footer.css'
 import Reveal from './Reveal'
 
@@ -28,12 +27,12 @@ function SocialChat() {
 }
 
 const footerLinks = [
-  { label: 'Giới thiệu', to: '/gioi-thieu' },
-  { label: 'Dịch vụ', to: '/dich-vu' },
-  { label: 'Đặt lịch khám', to: '/dat-lich-kham' },
-  { label: 'Thư viện ảnh', to: '/thu-vien-anh' },
-  { label: 'Đánh giá khách hàng', to: '/danh-gia-khach-hang' },
-  { label: 'Liên hệ', to: '/lien-he' },
+  { label: 'Giới thiệu', to: '#gioi-thieu' },
+  { label: 'Dịch vụ', to: '#dich-vu' },
+  { label: 'Đặt lịch khám', to: '#dat-lich-kham' },
+  { label: 'Thư viện ảnh', to: '#thu-vien-anh' },
+  { label: 'Đánh giá khách hàng', to: '#danh-gia-khach-hang' },
+  { label: 'Liên hệ', to: '#lien-he' },
 ]
 
 export function ContactCTA() {
@@ -110,7 +109,7 @@ export function SiteFooter() {
         </div>
 
         <nav className="site-footer-nav">
-          {footerLinks.map(l => <Link key={l.label} to={l.to}>{l.label}</Link>)}
+          {footerLinks.map(l => <a key={l.label} href={l.to}>{l.label}</a>)}
         </nav>
 
         <div className="site-footer-addr">

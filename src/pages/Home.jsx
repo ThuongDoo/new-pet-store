@@ -14,6 +14,8 @@ import GalleryTeaser from '../sections/GalleryTeaser'
 import Cases from '../sections/Cases'
 import Testimonials from '../sections/Testimonials'
 import Knowledge from '../sections/Knowledge'
+import Booking from '../sections/Booking'
+import { ContactCTA } from '../sections/Footer'
 
 function SunDeco() {
   return (
@@ -100,7 +102,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <div className="hero-grid">
+      <div className="hero-grid" id="top">
 
         {/* LEFT */}
         <div className="left">
@@ -282,6 +284,8 @@ export default function Home() {
       <Testimonials />
       <Cases />
       <Knowledge />
+      <Booking />
+      <ContactCTA />
     </>
   )
 }
