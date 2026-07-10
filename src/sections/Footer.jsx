@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Footer.css'
 import Reveal from './Reveal'
+import { CLIENT_DATA } from '../data/clientData'
 
 function LogoMark() {
   return (
@@ -30,12 +31,12 @@ const footerLinks = [
   { label: 'Giới thiệu', to: '#gioi-thieu' },
   { label: 'Dịch vụ', to: '#dich-vu' },
   { label: 'Đặt lịch khám', to: '#dat-lich-kham' },
-  { label: 'Thư viện ảnh', to: '#thu-vien-anh' },
   { label: 'Đánh giá khách hàng', to: '#danh-gia-khach-hang' },
   { label: 'Liên hệ', to: '#lien-he' },
 ]
 
-export function ContactCTA() {
+export function ContactCTA({ data = CLIENT_DATA }) {
+  const { contact, phone, phoneLabel } = data
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
@@ -52,18 +53,15 @@ export function ContactCTA() {
 
       <div className="section-wrap foot-cta-wrap">
         <Reveal className="foot-cta-copy">
-          <div className="eyebrow foot-eyebrow">✦ Liên hệ</div>
-          <h2 className="foot-h2">Hãy để chúng tôi<br /><em>đồng hành cùng bé.</em></h2>
-          <p className="foot-p">
-            Đặt lịch khám, hỏi thăm tình trạng sức khỏe, hay chỉ đơn giản là
-            trò chuyện — chúng tôi luôn sẵn sàng lắng nghe.
-          </p>
+          <div className="eyebrow foot-eyebrow">✦ {contact.eyebrow}</div>
+          <h2 className="foot-h2">{contact.h2Line1}<br /><em>{contact.h2Em}</em></h2>
+          <p className="foot-p">{contact.p}</p>
           <div className="foot-cta-actions">
-            <a href="tel:19009999" className="foot-cta-phone">
+            <a href={`tel:${phone.replace(/\s/g, '')}`} className="foot-cta-phone">
               <span className="foot-phone-ring">📞</span>
               <span>
-                <strong>1900 9999</strong>
-                <small>Hotline 24/7</small>
+                <strong>{phone}</strong>
+                <small>{phoneLabel}</small>
               </span>
             </a>
           </div>
@@ -73,19 +71,19 @@ export function ContactCTA() {
           {submitted ? (
             <div className="foot-form-thanks">
               <div className="foot-form-thanks-icon">🤍</div>
-              <h3>Đã nhận được lời nhắn!</h3>
-              <p>Đội ngũ PawHarmony sẽ liên hệ lại với bạn sớm nhất.</p>
+              <h3>{contact.thanksTitle}</h3>
+              <p>{contact.thanksP}</p>
             </div>
           ) : (
             <form className="foot-form" onSubmit={handleSubmit}>
-              <h3>Gửi lời nhắn cho chúng tôi</h3>
+              <h3>{contact.formHeading}</h3>
               <div className="foot-field-row">
                 <input type="text" placeholder="Họ và tên" required />
                 <input type="tel" placeholder="Số điện thoại" required />
               </div>
               <input type="text" placeholder="Tên & loài thú cưng của bạn" />
-              <textarea placeholder="Bạn cần PawHarmony hỗ trợ điều gì?" rows={3}></textarea>
-              <button type="submit">Gửi lời nhắn</button>
+              <textarea placeholder="Bạn cần hỗ trợ điều gì?" rows={3}></textarea>
+              <button type="submit">{contact.submitBtn}</button>
             </form>
           )}
         </Reveal>
@@ -94,17 +92,19 @@ export function ContactCTA() {
   )
 }
 
-export function SiteFooter() {
+export function SiteFooter({ data = CLIENT_DATA }) {
+  const { brand, address, email, social, footer } = data
+
   return (
     <footer className="site-footer">
       <div className="section-wrap site-footer-wrap">
         <div className="site-footer-brand">
-          <div className="site-footer-logo"><LogoMark /><span>Paw<em>Harmony</em></span></div>
-          <p>Vì họ là gia đình — chăm sóc bằng cả chuyên môn và trái tim.</p>
+          <div className="site-footer-logo"><LogoMark /><span>{brand}</span></div>
+          <p>{footer.tagline}</p>
           <div className="site-footer-social">
-            <a href="#" aria-label="Facebook"><SocialFacebook /></a>
-            <a href="#" aria-label="Instagram"><SocialCamera /></a>
-            <a href="#" aria-label="Zalo"><SocialChat /></a>
+            <a href={social.facebook || '#'} aria-label="Facebook"><SocialFacebook /></a>
+            <a href={social.instagram || '#'} aria-label="Instagram"><SocialCamera /></a>
+            <a href={social.zalo || '#'} aria-label="Zalo"><SocialChat /></a>
           </div>
         </div>
 
@@ -113,13 +113,13 @@ export function SiteFooter() {
         </nav>
 
         <div className="site-footer-addr">
-          <p>123 Đường Yêu Thương, Q.1, TP.HCM</p>
-          <p>hello@pawharmony.vn</p>
+          <p>{address}</p>
+          <p>{email}</p>
         </div>
       </div>
       <div className="site-footer-bottom">
-        <span>© 2026 PawHarmony Animal Care Clinic.</span>
-        <span>Made with 🤍 for every paw.</span>
+        <span>{footer.copyright}</span>
+        <span>{footer.note}</span>
       </div>
     </footer>
   )

@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import "./Ecosystem.css";
 import Reveal from "./Reveal";
+import { CLIENT_DATA } from "../data/clientData";
 
-export default function Ecosystem() {
-  const stageRef = useRef(null);
+export default function Ecosystem({ data = CLIENT_DATA }) {
+  const { story } = data;
+  const sectionRef = useRef(null);
   const layerRefs = useRef([]);
 
   const particles = Array.from({ length: 16 }, (_, i) => ({
@@ -14,7 +16,7 @@ export default function Ecosystem() {
   }));
 
   useEffect(() => {
-    const node = stageRef.current;
+    const node = sectionRef.current;
     if (!node) return;
     const handleMove = (e) => {
       const rect = node.getBoundingClientRect();
@@ -31,7 +33,7 @@ export default function Ecosystem() {
   }, []);
 
   return (
-    <section className="eco" id="gioi-thieu">
+    <section className="eco" id="gioi-thieu" ref={sectionRef}>
       <div
         className="eco-glow eco-glow1"
         ref={(el) => (layerRefs.current[0] = el)}
@@ -62,38 +64,14 @@ export default function Ecosystem() {
 
       <div className="section-wrap eco-wrap">
         <Reveal className="eco-copy">
-          <div className="eco-eyebrow">✦ Câu chuyện của chúng tôi</div>
+          <div className="eco-eyebrow">✦ {story.eyebrow}</div>
           <h2 className="eco-h2">
-            Một sợi chỉ ánh sáng,
+            {story.h2Line1}
             <br />
-            <em>nối những trái tim.</em>
+            <em>{story.h2Em}</em>
           </h2>
-          <p className="eco-p">
-            Mỗi thú cưng là một thế giới nhỏ. Mỗi người chủ là một mái nhà. Và ở
-            giữa, PawHarmony là nơi những bàn tay chữa lành thắp lên sợi dây kết
-            nối ấy — bằng chuyên môn, và bằng sự dịu dàng.
-          </p>
+          <p className="eco-p">{story.p}</p>
         </Reveal>
-
-        <div className="eco-stage" ref={stageRef}>
-          <svg
-            className="eco-threads"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="ecoGradA" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#F07250" stopOpacity=".75" />
-                <stop offset="100%" stopColor="#F5C840" stopOpacity=".9" />
-              </linearGradient>
-              <linearGradient id="ecoGradB" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#A8D8CC" stopOpacity=".8" />
-                <stop offset="100%" stopColor="#F5C840" stopOpacity=".9" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
       </div>
     </section>
   );

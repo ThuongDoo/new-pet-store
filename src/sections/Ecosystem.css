@@ -1,7 +1,7 @@
 .eco {
   position: relative;
   overflow: hidden;
-  padding: 130px 0 150px;
+  padding: 100px 0;
   background: radial-gradient(120% 90% at 78% 18%, var(--ink-mid) 0%, var(--ink) 55%, #0A1F19 100%);
   color: #F4EFE4;
   isolation: isolate;
@@ -39,7 +39,7 @@
 
 .eco-wrap { position: relative; z-index: 2; }
 
-.eco-copy { max-width: 480px; margin-bottom: 64px; }
+.eco-copy { max-width: 480px; }
 .eco-eyebrow {
   display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 2.4px;
   text-transform: uppercase; color: var(--gold-soft); margin-bottom: 18px;
@@ -52,79 +52,3 @@
   color: var(--rose); font-size: 1.18em; display: inline-block; margin-top: 6px;
 }
 .eco-p { font-size: 14.5px; line-height: 1.9; color: #CADBD2; margin-top: 20px; max-width: 420px; }
-
-.eco-stage {
-  position: relative;
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  height: clamp(440px, 56vw, 640px);
-}
-
-.eco-threads { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
-.eco-thread { animation: ecoDash 5s linear infinite; opacity: .85; }
-.eco-thread-b { animation-duration: 6.2s; }
-@keyframes ecoDash { to { stroke-dashoffset: -18; } }
-
-.eco-island {
-  position: absolute;
-  display: flex; flex-direction: column; align-items: center; gap: 14px;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-.eco-island-pet   { left: 21%; top: 69%; }
-.eco-island-owner { left: 39%; top: 19%; }
-.eco-island-vet   { left: 64%; top: 46%; z-index: 4; }
-
-.eco-blob {
-  position: relative;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 25px 60px rgba(0,0,0,.45);
-  animation: ecoBreath 9s ease-in-out infinite;
-}
-@keyframes ecoBreath {
-  0%, 100% { border-radius: 58% 42% 46% 54%/48% 56% 44% 52%; }
-  50%      { border-radius: 44% 56% 58% 42%/56% 44% 54% 46%; }
-}
-
-.eco-blob-pet {
-  width: clamp(96px, 11vw, 140px); height: clamp(96px, 11vw, 140px);
-  overflow: hidden; border: 3px solid rgba(255,255,255,.18);
-  animation-delay: -1s;
-}
-.eco-blob-pet img { width: 100%; height: 100%; object-fit: cover; }
-
-.eco-blob-owner {
-  width: clamp(86px, 9.5vw, 124px); height: clamp(86px, 9.5vw, 124px);
-  background: linear-gradient(150deg, rgba(248,222,148,.24), rgba(240,114,80,.16));
-  border: 1.5px solid rgba(248,222,148,.35);
-  animation-delay: -4s;
-}
-
-.eco-blob-vet {
-  width: clamp(150px, 17vw, 220px); height: clamp(150px, 17vw, 220px);
-  background: linear-gradient(155deg, rgba(168,216,204,.28), rgba(28,107,88,.4));
-  border: 1.5px solid rgba(248,222,148,.4);
-  box-shadow: 0 0 0 1px rgba(248,222,148,.08), 0 30px 80px rgba(0,0,0,.5), 0 0 70px rgba(245,200,64,.18);
-}
-.eco-blob-ring {
-  position: absolute; inset: -16px; border-radius: 50%;
-  border: 1px dashed rgba(248,222,148,.35);
-  animation: ecoSpin 26s linear infinite;
-}
-@keyframes ecoSpin { to { transform: rotate(360deg); } }
-
-.eco-tag {
-  font-size: 12px; font-weight: 600; color: #EFE7D2; letter-spacing: .3px;
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-  padding: 6px 14px; border-radius: 20px; backdrop-filter: blur(6px);
-  white-space: nowrap;
-}
-.eco-tag-vet { color: #FBF0C5; background: rgba(245,200,64,.12); border-color: rgba(245,200,64,.3); }
-
-@media (max-width: 880px) {
-  .eco-stage { max-width: 420px; height: 520px; }
-  .eco-island-pet   { left: 16%; top: 74%; }
-  .eco-island-owner { left: 60%; top: 14%; }
-  .eco-island-vet   { left: 52%; top: 46%; }
-}

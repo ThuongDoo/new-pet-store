@@ -1,29 +1,40 @@
 import './TeamTeaser.css'
 import Reveal from './Reveal'
-import { doctors } from '../data/team'
+import { CLIENT_DATA } from '../data/clientData'
+import { isImageValue } from '../utils/imgSrc'
 
-export default function TeamTeaser() {
-  const featured = doctors.slice(0, 3)
+function initials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(-2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+}
+
+export default function TeamTeaser({ data = CLIENT_DATA }) {
+  const { team } = data
 
   return (
     <section className="team-teaser">
-      <div className="section-wrap">
+      <div className="section-wrap team-teaser-wrap">
         <Reveal className="team-teaser-head" as="div">
-          <div>
-            <div className="eyebrow team-teaser-eyebrow">✦ Đội ngũ bác sĩ</div>
-            <h2 className="team-teaser-h2">Chuyên môn vững vàng,<br /><span>tận tâm với từng ca bệnh.</span></h2>
-          </div>
+          <div className="eyebrow team-teaser-eyebrow">✦ Đội ngũ bác sĩ</div>
+          <h2 className="team-teaser-h2">{team.h2Line1}<br /><span>{team.h2Span}</span></h2>
+          <p className="team-teaser-p">{team.p}</p>
         </Reveal>
 
-        <div className="team-teaser-grid">
-          {featured.map((d, i) => (
-            <Reveal as="div" className="team-teaser-card" key={d.name} delay={i * 100}>
-              <div className={`team-teaser-avatar tone-${d.tone}`}>{d.initials}</div>
-              <h3>{d.name}</h3>
-              <p>{d.title}</p>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal as="div" className="team-teaser-card" delay={100}>
+          {isImageValue(team.avatar) ? (
+            <img className="team-teaser-photo" src={team.avatar} alt={team.name} />
+          ) : (
+            <div className={`team-teaser-avatar tone-${team.tone}`}>{initials(team.name)}</div>
+          )}
+          <h3>{team.name}</h3>
+          <p className="team-teaser-title">{team.title}</p>
+          <p className="team-teaser-bio">{team.bio}</p>
+        </Reveal>
       </div>
     </section>
   )

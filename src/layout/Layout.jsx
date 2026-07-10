@@ -1,6 +1,8 @@
 import './Layout.css'
 import Home from '../pages/Home'
 import { SiteFooter } from '../sections/Footer'
+import { CLIENT_DATA } from '../data/clientData'
+import { useThemeVars } from '../hooks/useThemeVars'
 
 function LogoSVG() {
   return (
@@ -20,20 +22,21 @@ function LogoSVG() {
 const navItems = [
   { to: '#gioi-thieu', label: 'Giới thiệu' },
   { to: '#dich-vu', label: 'Dịch vụ' },
-  { to: '#thu-vien-anh', label: 'Thư viện ảnh' },
   { to: '#danh-gia-khach-hang', label: 'Đánh giá khách hàng' },
   { to: '#lien-he', label: 'Liên hệ' },
 ]
 
-export default function Layout() {
+export default function Layout({ data = CLIENT_DATA }) {
+  const themeVars = useThemeVars(data.theme)
+
   return (
-    <>
+    <div className="site-root" style={themeVars}>
       <nav>
         <a href="#top" className="logo">
           <LogoSVG />
           <div className="logo-texts">
-            <h2>Paw<em>Harmony</em></h2>
-            <p>ANIMAL CARE CLINIC</p>
+            <h2>{data.brand}</h2>
+            <p>{data.tagline}</p>
           </div>
         </a>
 
@@ -50,7 +53,7 @@ export default function Layout() {
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
               <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
             </svg>
-            Đặt lịch khám
+            {data.bookBtn}
           </a>
           <button className="btn-menu">
             <span></span><span></span><span></span>
@@ -59,10 +62,10 @@ export default function Layout() {
       </nav>
 
       <main>
-        <Home />
+        <Home data={data} />
       </main>
 
-      <SiteFooter />
-    </>
+      <SiteFooter data={data} />
+    </div>
   )
 }

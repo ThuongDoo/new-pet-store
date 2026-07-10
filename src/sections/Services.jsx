@@ -1,5 +1,6 @@
 import './Services.css'
 import Reveal from './Reveal'
+import { CLIENT_DATA } from '../data/clientData'
 
 export function IconExam() {
   return (
@@ -64,35 +65,31 @@ function ArrowIcon() {
   )
 }
 
-const services = [
-  { icon: <IconExam />, tone: 'mint', name: 'Khám & tư vấn chuyên sâu', desc: 'Thăm khám tổng quát, theo dõi sức khỏe định kỳ cùng bác sĩ giàu kinh nghiệm.' },
-  { icon: <IconVaccine />, tone: 'peach', name: 'Tiêm phòng an toàn', desc: 'Phác đồ vắc-xin chuẩn quốc tế, theo dõi sát sau tiêm.' },
-  { icon: <IconSpa />, tone: 'gold', name: 'Spa & Grooming cao cấp', desc: 'Tắm gội, cắt tỉa, thư giãn — chăm chút từ dáng vẻ đến tâm trạng.' },
-  { icon: <IconStay />, tone: 'sage', name: 'Lưu trú & chăm sóc toàn diện', desc: 'Không gian lưu trú ấm áp khi bạn vắng nhà, như ở chính ngôi nhà của bé.' },
-  { icon: <IconLab />, tone: 'mint', name: 'Xét nghiệm & chẩn đoán hình ảnh', desc: 'Thiết bị hiện đại, kết quả nhanh và chính xác.' },
-]
+const ICONS = [<IconExam />, <IconVaccine />, <IconSpa />, <IconStay />, <IconLab />]
 
-export default function Services() {
+export default function Services({ data = CLIENT_DATA }) {
+  const { services } = data
+
   return (
     <section className="service" id="dich-vu">
       <div className="section-wrap">
         <Reveal className="service-head">
           <div className="eyebrow service-eyebrow">✦ Dịch vụ</div>
-          <h2 className="service-h2">Chăm sóc toàn diện,<br /><span>từng nhịp thở một.</span></h2>
+          <h2 className="service-h2">{services.h2Line1}<br /><span>{services.h2Span}</span></h2>
         </Reveal>
 
         <div className="service-bento">
           <Reveal className="service-card service-card-feature" delay={0}>
             <div className="service-feature-icon"><IconEmergency /></div>
-            <h3>Cấp cứu 24/7</h3>
-            <p>Đội ngũ trực cấp cứu mọi giờ trong ngày — vì những khoảnh khắc khẩn cấp không bao giờ báo trước.</p>
-            <button className="service-feature-cta">Gọi đường dây nóng <ArrowIcon /></button>
+            <h3>{services.emergency.title}</h3>
+            <p>{services.emergency.desc}</p>
+            <button className="service-feature-cta">{services.emergency.cta} <ArrowIcon /></button>
             <div className="service-feature-deco"></div>
           </Reveal>
 
-          {services.map((s, i) => (
+          {services.items.map((s, i) => (
             <Reveal as="div" className={`service-card service-card-sm tone-${s.tone}`} key={s.name} delay={120 + i * 90}>
-              <div className="service-sm-icon">{s.icon}</div>
+              <div className="service-sm-icon">{ICONS[i % ICONS.length]}</div>
               <h4>{s.name}</h4>
               <p>{s.desc}</p>
             </Reveal>
